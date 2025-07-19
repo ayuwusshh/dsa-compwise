@@ -3,15 +3,21 @@ using namespace std;
 
 class Solution {
 public:
-    void sortColors(vector<int>& nums) {
+    vector<int> majorityElement(vector<int>& nums) {
         // Your code here
-       for(int k=0;k<nums.size();k++){
-         for(int i=1;i<nums.size();i++){
-          if(nums[i]<nums[i-1]){
-            swap(nums[i],nums[i-1]);
+        unordered_map<int,int> ok;
+        vector<int> ans;
+        int m=nums.size();
+        int one=m/3;
+        for(int num:nums){
+          ok[num]++;
+        }
+        for(auto& it:ok){
+          if(it.second>one){
+            ans.push_back(it.first);
           }
         }
-       }
+        return ans;
     }
 };
 
@@ -24,9 +30,9 @@ int main() {
     }
 
     Solution sol;
-    sol.sortColors(nums);
+    vector<int> result = sol.majorityElement(nums);
 
-    for(int num : nums) {
+    for(int num : result) {
         cout << num << " ";
     }
     cout << endl;

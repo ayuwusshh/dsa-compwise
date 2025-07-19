@@ -5,6 +5,19 @@ class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
         // Your code here
+        unordered_map<int,int> ok;
+        vector<int> ans;
+        int m=nums.size();
+        int one=m/3;
+        for(int num:nums){
+          ok[num]++;
+        }
+        for(auto& it:ok){
+          if(it.second>one){
+            ans.push_back(it.first);
+          }
+        }
+        return ans;
     }
 };
 

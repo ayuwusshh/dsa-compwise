@@ -1,0 +1,1 @@
+int half=n/2;
